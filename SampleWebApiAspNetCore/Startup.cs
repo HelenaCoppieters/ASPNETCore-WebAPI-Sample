@@ -48,11 +48,11 @@ namespace SampleWebApiAspNetCore
                 var factory = x.GetRequiredService<IUrlHelperFactory>();
                 return factory.GetUrlHelper(actionContext);
             });
-            
-            services.AddControllers()
-                   .AddNewtonsoftJson(options =>
-                       options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver())
-                            .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
+            services.AddControllers();
+                   //.AddNewtonsoftJson(options =>
+                   //    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver())
+                   //         .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddVersioning();
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();

@@ -2,7 +2,7 @@
 using System.Linq;
 using AutoMapper;
 using SampleWebApiAspNetCore.Dtos;
-using Microsoft.AspNetCore.JsonPatch;
+//using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using SampleWebApiAspNetCore.Repositories;
 using System.Collections.Generic;
@@ -100,7 +100,7 @@ namespace SampleWebApiAspNetCore.v1.Controllers
         }
 
         [HttpPatch("{id:int}", Name = nameof(PartiallyUpdateFood))]
-        public ActionResult<FoodDto> PartiallyUpdateFood(int id, [FromBody] JsonPatchDocument<FoodUpdateDto> patchDoc)
+        public ActionResult<FoodDto> PartiallyUpdateFood(int id, [FromBody] FoodUpdateDto patchDoc)
         {
             if (patchDoc == null)
             {
@@ -115,7 +115,7 @@ namespace SampleWebApiAspNetCore.v1.Controllers
             }
 
             FoodUpdateDto foodUpdateDto = _mapper.Map<FoodUpdateDto>(existingEntity);
-            patchDoc.ApplyTo(foodUpdateDto);
+            //patchDoc.ApplyTo(foodUpdateDto);
 
             TryValidateModel(foodUpdateDto);
 
